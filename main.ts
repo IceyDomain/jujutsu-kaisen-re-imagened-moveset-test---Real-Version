@@ -2838,16 +2838,6 @@ statusbars.onStatusReached(StatusBarKind.Gojo_Ult, statusbars.StatusComparison.G
     Gojos_Cursed_Energy.max = 50000
     Gojos_Cursed_Energy.value = 50000
 })
-scene.onOverlapTile(SpriteKind.Gojo_Satoru, assets.tile`myTile0`, function (sprite, location) {
-    if (game.ask("Do you want to go to the test map", true)) {
-        tiles.setCurrentTilemap(tilemap`level4`)
-        tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 0))
-    } else if (false) {
-        tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 0))
-    } else {
-    	
-    }
-})
 sprites.onOverlap(SpriteKind.Transfigured, SpriteKind.TheStrongestSorcceroftoday, function (sprite, otherSprite) {
     if (mySprite.kind() == SpriteKind.Gojo_Satoru) {
         info.player1.changeLifeBy(-5)
@@ -4312,7 +4302,7 @@ sprites.onOverlap(SpriteKind.Hollow_Purple, SpriteKind.Mahito_Curse, function (s
 })
 scene.onOverlapTile(SpriteKind.Yuta_Otsuka, assets.tile`myTile0`, function (sprite, location) {
     if (game.ask("Do you want to go to the test map", true)) {
-        tiles.setCurrentTilemap(tilemap`level4`)
+        tiles.setCurrentTilemap(Maps._pickRandom())
         tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 0))
     } else if (false) {
         tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 0))
@@ -4349,6 +4339,16 @@ sprites.onOverlap(SpriteKind.Attract, SpriteKind.Black_Flash_Bosster_GOJO, funct
 sprites.onOverlap(SpriteKind.Imaginary_Blue, SpriteKind.Hanami_Curse, function (sprite, otherSprite) {
     Special_Health_Phase_2.value += -10
     sprites.destroy(sprite)
+})
+scene.onOverlapTile(SpriteKind.Gojo_Satoru, assets.tile`myTile0`, function (sprite, location) {
+    if (game.ask("Do you want to go to the test map", true)) {
+        tiles.setCurrentTilemap(Maps._pickRandom())
+        tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 0))
+    } else if (false) {
+        tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 0))
+    } else {
+    	
+    }
 })
 sprites.onOverlap(SpriteKind.Hollow_Purple, SpriteKind.Hanami_Curse, function (sprite, otherSprite) {
     Special_Health_Phase_2.value += -50
@@ -4401,6 +4401,7 @@ let Aplification_Blue: Sprite = null
 let Gojos_Cursed_Energy: StatusBarSprite = null
 let Gojos_Full_Power: StatusBarSprite = null
 let mySprite: Sprite = null
+let Maps: tiles.TileMapData[] = []
 scene.setBackgroundImage(img`
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
@@ -6189,10 +6190,10 @@ img`
     ............cccccc..ccc.
     `
 ]
-let Maps = [
+Maps = [
 tilemap`level4`,
 tilemap`level12`,
-tilemap`level12`,
+tilemap`level17`,
 tilemap`level14`,
 tilemap`level15`
 ]
